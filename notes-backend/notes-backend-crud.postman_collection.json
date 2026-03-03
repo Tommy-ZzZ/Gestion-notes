@@ -1,0 +1,563 @@
+{
+  "info": {
+    "name": "Notes Backend - CRUD All Tables",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Etablissement",
+      "item": [
+        {
+          "name": "Create Etablissement",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom_etablissement\": \"Université Exemple\",\n  \"description\": \"Description de l'université\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/etablissements",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["etablissements"]
+            }
+          }
+        },
+        {
+          "name": "Get All Etablissements",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/etablissements",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["etablissements"]
+            }
+          }
+        },
+        {
+          "name": "Get Etablissement By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/etablissements/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["etablissements", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "remplace-par-uuid"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Etablissement",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom_etablissement\": \"Université Exemple Modifiée\",\n  \"description\": \"Description modifiée\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/etablissements/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["etablissements", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "remplace-par-uuid"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Etablissement",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/etablissements/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["etablissements", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "remplace-par-uuid"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Professeur",
+      "item": [
+        {
+          "name": "Create Professeur",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom_prof\": \"Doe\",\n  \"prenom_prof\": \"John\",\n  \"contact\": \"john.doe@example.com\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/professeurs",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["professeurs"]
+            }
+          }
+        },
+        {
+          "name": "Get All Professeurs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/professeurs",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["professeurs"]
+            }
+          }
+        },
+        {
+          "name": "Get Professeur By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/professeurs/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["professeurs", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "remplace-par-uuid"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Professeur",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom_prof\": \"Doe Updated\",\n  \"prenom_prof\": \"John Updated\",\n  \"contact\": \"john.updated@example.com\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/professeurs/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["professeurs", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "remplace-par-uuid"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Professeur",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/professeurs/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["professeurs", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "remplace-par-uuid"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Etudiant",
+      "item": [
+        {
+          "name": "Create Etudiant",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id_etablissement\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"matricule\": \"MAT001\",\n  \"nom_et\": \"Smith\",\n  \"prenom_et\": \"Jane\",\n  \"niveau\": \"L1\",\n  \"contact\": \"jane.smith@example.com\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/etudiants",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["etudiants"]
+            }
+          }
+        },
+        {
+          "name": "Get All Etudiants",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/etudiants",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["etudiants"]
+            }
+          }
+        },
+        {
+          "name": "Get Etudiant By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/etudiants/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["etudiants", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "remplace-par-uuid"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Etudiant",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"matricule\": \"MAT001_UPDATED\",\n  \"nom_et\": \"Smith Updated\",\n  \"prenom_et\": \"Jane Updated\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/etudiants/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["etudiants", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "remplace-par-uuid"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Etudiant",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/etudiants/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["etudiants", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "remplace-par-uuid"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Matiere",
+      "item": [
+        {
+          "name": "Create Matiere",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id_professeur\": \"123e4567-e89b-12d3-a456-426614174001\",\n  \"nom_matiere\": \"Mathématiques\",\n  \"coefficient\": 2,\n  \"credit\": 3\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/matieres",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["matieres"]
+            }
+          }
+        },
+        {
+          "name": "Get All Matieres",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/matieres",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["matieres"]
+            }
+          }
+        },
+        {
+          "name": "Get Matiere By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/matieres/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["matieres", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "remplace-par-uuid"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Matiere",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom_matiere\": \"Mathématiques Avancées\",\n  \"coefficient\": 3,\n  \"credit\": 4\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/matieres/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["matieres", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "remplace-par-uuid"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Matiere",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/matieres/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["matieres", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "remplace-par-uuid"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Note",
+      "item": [
+        {
+          "name": "Create Note",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id_etudiant\": \"123e4567-e89b-12d3-a456-426614174002\",\n  \"note\": 15.5\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/notes",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["notes"]
+            }
+          }
+        },
+        {
+          "name": "Get All Notes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/notes",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["notes"]
+            }
+          }
+        },
+        {
+          "name": "Get Note By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/notes/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["notes", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "remplace-par-uuid"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Note",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"note\": 16.0\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/notes/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["notes", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "remplace-par-uuid"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Note",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/notes/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["notes", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "remplace-par-uuid"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

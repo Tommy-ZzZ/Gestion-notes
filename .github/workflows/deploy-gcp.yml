@@ -1,0 +1,56 @@
+name: Deploy to GCP
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  PROJECT_ID: gestion-notes-prod
+  GKE_CLUSTER: notes-cluster
+  GKE_ZONE: us-central1
+  DOCKERHUB_USERNAME: alfa2003
+
+jobs:
+  deploy-gcp:
+    name: Deploy to GCP GKE
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Configure kubectl
+        run: |
+          gcloud container clusters get-credentials ${{ env.GKE_CLUSTER }} \
+            --zone ${{ env.GKE_ZONE }} \
+            --project ${{ env.PROJECT_ID }}
+
+      - name: Deploy to GKE
+        run: |
+          kubectl apply -f k8s/base/namespace.yaml
+          kubectl apply -f k8s/overlays/prod/secrets.yaml
+          kubectl apply -f k8s/base/
+
+
+          kubectl set image deployment/frontend frontend=alfa2003/notes-frontend:latest -n notes-app
+          kubectl set image deployment/backend backend=alfa2003/notes-backend:latest -n notes-app
+    
+          
+          kubectl rollout restart deployment/backend -n notes-app
+          kubectl rollout restart deployment/frontend -n notes-app
+          
+          kubectl rollout status deployment/backend -n notes-app --timeout=300s
+          kubectl rollout status deployment/frontend -n notes-app --timeout=300s
+
+      - name: Get Ingress IP
+        run: |
+          kubectl get ingress notes-ingress -n notes-app

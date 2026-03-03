@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: test-postgres
+    environment:
+      POSTGRES_DB: notes_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
+    ports:
+      - "5433:5432"
+    volumes:
+      - test_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    image: alfa2003/notes-backend:latest
+    container_name: test-backend
+    environment:
+      NODE_ENV: production
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: notes_db
+      DB_USER: postgres
+      DB_PASSWORD: postgres123
+      PORT: 4000
+      RECAPTCHA_SECRET_KEY: 6Ld62hYsAAAAAJVqg2PMzMdKLb-Z4ufmQ_K0cfBo
+    ports:
+      - "4000:4000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    # Ne pas réexécuter les seeds si la DB existe déjà
+    command: sh -c "npx sequelize-cli db:migrate && node server.js"
+
+  frontend:
+    image: alfa2003/notes-frontend:latest
+    container_name: test-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  test_postgres_data:
+
+networks:
+  default:
+    name: test-notes-network

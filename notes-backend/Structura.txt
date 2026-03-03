@@ -1,0 +1,58 @@
+/notes-backend
+├── config
+│   └── config.js
+├── controllers
+│   ├── etablissementController.js
+│   ├── etudiantController.js
+│   ├── matiereController.js
+│   ├── noteController.js
+│   └── professeurController.js
+├── middlewares
+│   └── errorHandler.js
+├── migrations
+│   ├── 202510200001-create-etablissement.js
+│   ├── 202510200002-create-professeur.js
+│   ├── 202510200003-create-etudiant.js
+│   ├── 202510200004-create-matiere.js
+│   └── 202510200005-create-note.js
+├── models
+│   ├── etablissement.js
+│   ├── etudiant.js
+│   ├── index.js
+│   ├── matiere.js
+│   ├── note.js
+│   └── professeur.js
+├── routes
+│   ├── etablissement.js
+│   ├── etudiant.js
+│   ├── matiere.js
+│   ├── note.js
+│   └── professeur.js
+├── seeders
+│   ├── 202510200101-seed-etablissement.js
+│   ├── 202510200102-seed-professeur.js
+│   ├── 202510200103-seed-etudiant.js
+│   ├── 202510200104-seed-matiere.js
+│   └── 202510200105-seed-note.js
+├── validators
+│   ├── etablissementValidator.js
+│   ├── etudiantValidator.js
+│   ├── matiereValidator.js
+│   ├── noteValidator.js
+│   └── professeurValidator.js
+├── .env.example
+├── .sequelizerc
+├── app.js
+├── package.json
+├── README.md
+└── server.js
+
+idetab: 1b945f49-6dad-494f-b5f9-722a723af541
+
+idprof: 55868ff3-e780-4d33-9117-d07ba0bc9c86
+
+idetudiant: 4e9f8c54-367a-4d08-b377-4a47ecf3d8c7
+
+idnote: 1ca57b48-3317-4e18-89b6-fc596bcd2877
+
+idmat: da8dd1e1-2d67-461d-9624-7814e11ec1a6

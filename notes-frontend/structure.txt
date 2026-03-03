@@ -1,0 +1,32 @@
+notes-frontend/
+├── public/
+├── src/
+│   ├── api/
+│   │   └── api.js              # Configuration des appels API avec Axios
+│   ├── components/
+│   │   ├── Navbar.jsx          # Menu de navigation
+│   │   ├── Footer.jsx          # (Optionnel) Pied de page
+│   │   ├── EtablissementList.jsx  # Liste des établissements
+│   │   ├── EtablissementForm.jsx  # Formulaire CRUD pour établissement
+│   │   ├── ProfesseurList.jsx     # Liste des professeurs
+│   │   ├── ProfesseurForm.jsx     # Formulaire CRUD pour professeur
+│   │   ├── EtudiantList.jsx       # Liste des étudiants
+│   │   ├── EtudiantForm.jsx       # Formulaire CRUD pour étudiant
+│   │   ├── MatiereList.jsx        # Liste des matières
+│   │   ├── MatiereForm.jsx        # Formulaire CRUD pour matière
+│   │   ├── NoteList.jsx           # Liste des notes
+│   │   ├── NoteForm.jsx           # Formulaire CRUD pour note
+│   ├── pages/
+│   │   ├── Home.jsx            # Page d'accueil
+│   │   ├── EtablissementPage.jsx  # Page pour gérer les établissements
+│   │   ├── ProfesseurPage.jsx     # Page pour gérer les professeurs
+│   │   ├── EtudiantPage.jsx       # Page pour gérer les étudiants
+│   │   ├── MatierePage.jsx        # Page pour gérer les matières
+│   │   ├── NotePage.jsx           # Page pour gérer les notes
+│   ├── App.jsx                 # Composant principal avec React Router
+│   ├── index.css               # Styles Tailwind
+│   ├── main.jsx                # Point d'entrée
+├── tailwind.config.js
+├── vite.config.js
+├── package.json
+└── README.md
