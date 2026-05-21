@@ -8,36 +8,47 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
+
     if (token) {
-      try {
-        const decoded = jwtDecode(token);
-        if (decoded.exp * 1000 < Date.now()) {
-          localStorage.removeItem('token');
-          setUser(null);
-        } else {
-          setUser(decoded);
-        }
-      } catch (err) {
-        console.error('Invalid token:', err);
-        localStorage.removeItem('token');
-        setUser(null);
-      }
+      handleLogin(token);
     }
   }, []);
 
-  const login = (token) => {
+  const handleLogin = (token) => {
     try {
-      const decoded = jwtDecode(token);
-      if (decoded.exp * 1000 < Date.now()) {
-        throw new Error('Token expired');
+      // 🔥 MODE DEMO
+      if (token === "demo-token-123") {
+        const fakeUser = {
+          username: "demo",
+          role: "user"
+        };
+
+        setUser(fakeUser);
+        localStorage.setItem("token", token);
+        return;
       }
-      localStorage.setItem('token', token);
+
+      // 🔥 MODE NORMAL JWT
+      const decoded = jwtDecode(token);
+
+      if (decoded.exp * 1000 < Date.now()) {
+        localStorage.removeItem('token');
+        setUser(null);
+        return;
+      }
+
       setUser(decoded);
+      localStorage.setItem("token", token);
+
     } catch (err) {
       console.error('Invalid token:', err);
       localStorage.removeItem('token');
       setUser(null);
     }
+  };
+
+  const login = (token) => {
+    handleLogin(token);
   };
 
   const logout = () => {
