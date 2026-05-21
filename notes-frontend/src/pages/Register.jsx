@@ -54,57 +54,74 @@ function Register() {
   };
 
   return (
-    <div>
-      <h2>Inscription</h2>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          value={formData.username}
-          onChange={handleChange}
-          required
-        />
+      <div className="max-w-md w-full p-6 bg-white rounded-lg shadow-lg">
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
+        <h2 className="text-2xl font-bold mb-6 text-center">
+          Inscription
+        </h2>
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
+        {error && <p className="text-red-500 mb-4 text-center">{error}</p>}
 
-        {/* CAPTCHA CONDITIONNEL */}
-        {!DEMO_MODE && (
-          <div>
-            <ReCAPTCHA
-              ref={recaptchaRef}
-              sitekey="6LdAlPMrAAAAAB1nduSsoFbVjxQrFVN-lviJKtFl"
-            />
-          </div>
-        )}
+        <form onSubmit={handleSubmit} className="space-y-4">
 
-        <button type="submit" disabled={loading}>
-          {loading ? 'Inscription...' : 'S'inscrire'}
-        </button>
-      </form>
+          <input
+            type="text"
+            name="username"
+            placeholder="Nom d'utilisateur"
+            value={formData.username}
+            onChange={handleChange}
+            className="w-full p-2 border rounded"
+            required
+          />
 
-      <p>
-        Déjà un compte ? <Link to="/login">Connexion</Link>
-      </p>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full p-2 border rounded"
+            required
+          />
 
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+          <input
+            type="password"
+            name="password"
+            placeholder="Mot de passe"
+            value={formData.password}
+            onChange={handleChange}
+            className="w-full p-2 border rounded"
+            required
+          />
+
+          {/* CAPTCHA uniquement si pas DEMO */}
+          {!DEMO_MODE && (
+            <div className="flex justify-center">
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                sitekey="6LdAlPMrAAAAAB1nduSsoFbVjxQrFVN-lviJKtFl"
+              />
+            </div>
+          )}
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-blue-500 text-white p-2 rounded"
+          >
+            {loading ? 'Inscription...' : 'S\'inscrire'}
+          </button>
+
+        </form>
+
+        <p className="text-center mt-4">
+          Déjà un compte ? <Link to="/login">Connexion</Link>
+        </p>
+
+      </div>
+
     </div>
   );
 }
