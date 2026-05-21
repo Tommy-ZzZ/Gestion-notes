@@ -56,48 +56,68 @@ function Login() {
   };
 
   return (
-    <div>
-      <h2>Connexion</h2>
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          value={formData.username}
-          onChange={handleChange}
-          required
-        />
+      <div className="relative max-w-md w-full mx-4 animate-fade-in-up">
+        <div className="relative bg-white p-8 rounded-3xl shadow-xl">
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
+          <h2 className="text-3xl font-bold text-center mb-6">
+            Connexion
+          </h2>
 
-        {/* CAPTCHA CONDITIONNEL */}
-        {!DEMO_MODE && (
-          <div>
-            <ReCAPTCHA
-              ref={recaptchaRef}
-              sitekey="6LdAlPMrAAAAAB1nduSsoFbVjxQrFVN-lviJKtFl"
+          {error && (
+            <p className="text-red-500 text-center mb-4">{error}</p>
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-6">
+
+            <input
+              type="text"
+              name="username"
+              placeholder="Nom d'utilisateur"
+              value={formData.username}
+              onChange={handleChange}
+              className="w-full p-3 border rounded"
+              required
             />
-          </div>
-        )}
 
-        <button type="submit" disabled={loading}>
-          {loading ? 'Connexion...' : 'Se connecter'}
-        </button>
-      </form>
+            <input
+              type="password"
+              name="password"
+              placeholder="Mot de passe"
+              value={formData.password}
+              onChange={handleChange}
+              className="w-full p-3 border rounded"
+              required
+            />
 
-      <p>
-        Pas de compte ? <Link to="/register">S'inscrire</Link>
-      </p>
+            {/* CAPTCHA uniquement si pas DEMO */}
+            {!DEMO_MODE && (
+              <div className="flex justify-center">
+                <ReCAPTCHA
+                  ref={recaptchaRef}
+                  sitekey="6LdAlPMrAAAAAB1nduSsoFbVjxQrFVN-lviJKtFl"
+                />
+              </div>
+            )}
 
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-blue-500 text-white p-3 rounded"
+            >
+              {loading ? 'Connexion...' : 'Se connecter'}
+            </button>
+
+          </form>
+
+          <p className="text-center mt-4">
+            Pas de compte ? <Link to="/register">S'inscrire</Link>
+          </p>
+
+        </div>
+      </div>
+
     </div>
   );
 }
