@@ -21,10 +21,7 @@ function Login() {
     setLoading(true);
 
     // 🔥 ACCÈS DIRECT (peu importe les inputs)
-    const fakeToken = "demo-token-123";
-
-    setAuth(fakeToken);
-    localStorage.setItem("token", fakeToken);
+    setAuth("demo-token-123");
 
     const from = location.state?.from?.pathname || '/';
     navigate(from, { replace: true });
@@ -61,8 +58,6 @@ function Login() {
             className="w-full p-3 border rounded"
           />
 
-          {/* 🔥 AUCUN CAPTCHA */}
-
           <button
             type="submit"
             disabled={loading}
@@ -78,6 +73,7 @@ function Login() {
         </p>
 
       </div>
+
     </div>
   );
 }
